@@ -7,9 +7,14 @@ namespace SummarizeTempsLab
     {
         static void Main(string[] args)
         {
-
+            string choice = "";
             string fileName;
+            bool userContinue = true;
 
+            while (userContinue)
+            {
+
+            
             // temperature data is in temps.txt
             // Write out prompt to the console
             Console.WriteLine("Enter filename");
@@ -21,6 +26,8 @@ namespace SummarizeTempsLab
             // If the file exists
             if (File.Exists(fileName))
             {
+                
+
                 Console.WriteLine("File Exist");
                 // Ask the user to enter the temperature threshold
                 Console.WriteLine("Enter Threshold");
@@ -86,8 +93,22 @@ namespace SummarizeTempsLab
                 //Tell the user the file does not exist
                 Console.WriteLine("File does not exist");
             }
-                
-          
+                // Ask User if they would like to continue
+                Console.WriteLine("Do you wish to Continue? Enter yes or no");
+                choice = Console.ReadLine();
+
+                if (choice == "yes")
+                {
+                    continue;
+                }
+
+                else
+                {
+                    userContinue = false;
+                    //Print Line to console "The Program has ended"
+                    Console.WriteLine("Program has ended...Thank You!");
+                }
+          }
             
         }
     }
