@@ -2,19 +2,15 @@
 
 using System.IO;
 
-
-
 namespace SummarizeTempsLab
 
 {
     class Program
-
     {
         static void Main(string[] args)
-
         {
 
-            string fileName;
+             string fileName;
 
             // temperature data is in temps.txt
             // Write out prompt to the console
@@ -68,7 +64,7 @@ namespace SummarizeTempsLab
                             // Increment "below" counter by 1
                             numBelow += 1;
                         }
-
+                        
                         line = sr.ReadLine();
                     }
                 }
@@ -83,8 +79,8 @@ namespace SummarizeTempsLab
 
                 // Print out average
                 Console.WriteLine("Average Temperature = " + average);
-            }
-
+            }     
+            
 
             else
             {
