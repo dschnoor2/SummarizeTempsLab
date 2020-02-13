@@ -11,6 +11,7 @@ namespace SummarizeTempsLab
         {
 
             string fileName;
+             
             bool userContinue = true;
             string choice = "";
 
@@ -33,6 +34,7 @@ namespace SummarizeTempsLab
                 {
                     // Ask the user to enter the temperature threshold
                     Console.WriteLine("Enter Threshold");
+
                     string input;
                     int threshold;
                     input = Console.ReadLine();
@@ -57,7 +59,7 @@ namespace SummarizeTempsLab
 
                             // Add Temperature to summing variable
                             sumTemps += temp;
-                            Console.WriteLine(sumTemps);
+                            
 
                             // If the current temperature value >= threshold 
                             if (temp >= threshold)
@@ -88,6 +90,9 @@ namespace SummarizeTempsLab
 
                     // Print out average
                     Console.WriteLine("Average Temperature = " + average);
+
+                    //Print out Total Temps
+                    Console.WriteLine("Total number of Temperatures = " + (numAbove +numBelow));
                 
                     //Write Line to console "Do you Wish to Continue?
                      Console.WriteLine("Do you wish to coninue? Enter yes or no");
