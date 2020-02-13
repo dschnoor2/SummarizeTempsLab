@@ -1,17 +1,21 @@
 ﻿using System;
+
 using System.IO;
 
+
+
 namespace SummarizeTempsLab
+
 {
     class Program
+
     {
         static void Main(string[] args)
-        {
-            string choice = "";
-            string fileName;
-            bool userContinue = true;
 
-                        
+        {
+
+            string fileName;
+
             // temperature data is in temps.txt
             // Write out prompt to the console
             Console.WriteLine("Enter filename");
@@ -23,8 +27,6 @@ namespace SummarizeTempsLab
             // If the file exists
             if (File.Exists(fileName))
             {
-                
-
                 Console.WriteLine("File Exist");
                 // Ask the user to enter the temperature threshold
                 Console.WriteLine("Enter Threshold");
@@ -66,7 +68,7 @@ namespace SummarizeTempsLab
                             // Increment "below" counter by 1
                             numBelow += 1;
                         }
-                        
+
                         line = sr.ReadLine();
                     }
                 }
@@ -81,8 +83,8 @@ namespace SummarizeTempsLab
 
                 // Print out average
                 Console.WriteLine("Average Temperature = " + average);
-            }     
-            
+            }
+
 
             else
             {
@@ -90,9 +92,9 @@ namespace SummarizeTempsLab
                 //Tell the user the file does not exist
                 Console.WriteLine("File does not exist");
             }
-                
-          }
-            
+
         }
+
     }
+
 }
