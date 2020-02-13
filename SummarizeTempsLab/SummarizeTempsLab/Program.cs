@@ -10,7 +10,10 @@ namespace SummarizeTempsLab
         static void Main(string[] args)
         {
 
-             string fileName;
+            string fileName;
+            bool userContinue = true;
+            string choice = "";
+
 
             // temperature data is in temps.txt
             // Write out prompt to the console
@@ -24,15 +27,11 @@ namespace SummarizeTempsLab
             if (File.Exists(fileName))
             {
                 Console.WriteLine("File Exist");
-                // Ask the user to enter the temperature threshold
-
-                bool userContinue = true;
-                string choice = "";
-
+                           
+                //Loop for userContinue
                 while (userContinue)
                 {
-
-
+                    // Ask the user to enter the temperature threshold
                     Console.WriteLine("Enter Threshold");
                     string input;
                     int threshold;
@@ -49,6 +48,7 @@ namespace SummarizeTempsLab
                     {
                         string line = sr.ReadLine();
                         int temp;
+
                         // While the line is not null
                         while (line != null)
                         {
@@ -65,10 +65,10 @@ namespace SummarizeTempsLab
                                 // Increment "above" counter by 1
                                 numAbove += 1;
                             }
-
+                            // Else (temperature is below)
                             else
                             {
-                                // Else (temperature is below)
+                                
                                 // Increment "below" counter by 1
                                 numBelow += 1;
                             }
@@ -79,6 +79,7 @@ namespace SummarizeTempsLab
 
                     // Print out temperatures above the threshold
                     Console.WriteLine("Temps Above = " + numAbove);
+
                     // Print out temperatures below the threshold
                     Console.WriteLine("Temps below = " + numBelow);
 
@@ -88,20 +89,23 @@ namespace SummarizeTempsLab
                     // Print out average
                     Console.WriteLine("Average Temperature = " + average);
                 
+                    //Write Line to console "Do you Wish to Continue?
+                     Console.WriteLine("Do you wish to coninue? Enter yes or no");
+                     choice = Console.ReadLine();
 
-                Console.WriteLine("Do you wish to coninue? Enter yes or no");
-                choice = Console.ReadLine();
+                
+                    if (choice == "yes")
+                    {
+                        continue;
+                    }
 
-                if (choice == "yes")
-                {
-                    continue;
-                }
+                    else
+                    {
+                        userContinue = false;
 
-                else
-                {
-                    userContinue = false;
-                    Console.WriteLine("Program has Ended...THANK YOU!");
-                }
+                        //Write Line to Console "Program has Ended"
+                        Console.WriteLine("Program has Ended...THANK YOU!");
+                    }
                
                 }
             }
