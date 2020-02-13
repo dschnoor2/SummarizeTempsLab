@@ -25,63 +25,86 @@ namespace SummarizeTempsLab
             {
                 Console.WriteLine("File Exist");
                 // Ask the user to enter the temperature threshold
-                Console.WriteLine("Enter Threshold");
-                string input;
-                int threshold;
-                input = Console.ReadLine();
-                threshold = int.Parse(input);
 
-                int sumTemps = 0;
-                int numAbove = 0;
-                int numBelow = 0;
+                bool userContinue = true;
+                string choice = "";
 
-                // Open the file and create Steam Reader
-                // Read a line into a string variable
-                using (StreamReader sr = File.OpenText(fileName))
+                while (userContinue)
                 {
-                    string line = sr.ReadLine();
-                    int temp;
-                    // While the line is not null
-                    while (line != null)
+
+
+                    Console.WriteLine("Enter Threshold");
+                    string input;
+                    int threshold;
+                    input = Console.ReadLine();
+                    threshold = int.Parse(input);
+
+                    int sumTemps = 0;
+                    int numAbove = 0;
+                    int numBelow = 0;
+
+                    // Open the file and create Steam Reader
+                    // Read a line into a string variable
+                    using (StreamReader sr = File.OpenText(fileName))
                     {
-                        // Convert (parse) into an integer variable
-                        temp = int.Parse(line);
-
-                        // Add Temperature to summing variable
-                        sumTemps += temp;
-                        Console.WriteLine(sumTemps);
-
-                        // If the current temperature value >= threshold 
-                        if (temp >= threshold)
+                        string line = sr.ReadLine();
+                        int temp;
+                        // While the line is not null
+                        while (line != null)
                         {
-                            // Increment "above" counter by 1
-                            numAbove += 1;
-                        }
+                            // Convert (parse) into an integer variable
+                            temp = int.Parse(line);
 
-                        else
-                        {
-                            // Else (temperature is below)
-                            // Increment "below" counter by 1
-                            numBelow += 1;
+                            // Add Temperature to summing variable
+                            sumTemps += temp;
+                            Console.WriteLine(sumTemps);
+
+                            // If the current temperature value >= threshold 
+                            if (temp >= threshold)
+                            {
+                                // Increment "above" counter by 1
+                                numAbove += 1;
+                            }
+
+                            else
+                            {
+                                // Else (temperature is below)
+                                // Increment "below" counter by 1
+                                numBelow += 1;
+                            }
+
+                            line = sr.ReadLine();
                         }
-                        
-                        line = sr.ReadLine();
                     }
+
+                    // Print out temperatures above the threshold
+                    Console.WriteLine("Temps Above = " + numAbove);
+                    // Print out temperatures below the threshold
+                    Console.WriteLine("Temps below = " + numBelow);
+
+                    // Calculate the average
+                    int average = sumTemps / (numAbove + numBelow);
+
+                    // Print out average
+                    Console.WriteLine("Average Temperature = " + average);
+                
+
+                Console.WriteLine("Do you wish to coninue? Enter yes or no");
+                choice = Console.ReadLine();
+
+                if (choice == "yes")
+                {
+                    continue;
                 }
 
-                // Print out temperatures above the threshold
-                Console.WriteLine("Temps Above = " + numAbove);
-                // Print out temperatures below the threshold
-                Console.WriteLine("Temps below = " + numBelow);
-
-                // Calculate the average
-                int average = sumTemps / (numAbove + numBelow);
-
-                // Print out average
-                Console.WriteLine("Average Temperature = " + average);
-            }     
-            
-
+                else
+                {
+                    userContinue = false;
+                    Console.WriteLine("Program has Ended...THANK YOU!");
+                }
+               
+                }
+            }
             else
             {
                 //Else (file does not exist)
